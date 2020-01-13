@@ -22,11 +22,11 @@ export function DataContext(props) {
   },[data])
 
     return (
-        <div>
+        <React.Fragment>
             <Golabal_Data.Provider value={[data, setdata, getdata]}>
                 {props.children}
             </Golabal_Data.Provider>
-        </div>
+        </React.Fragment>
     )
 }
 

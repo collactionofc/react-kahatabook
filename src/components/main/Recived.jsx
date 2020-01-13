@@ -7,6 +7,7 @@ import { Grid , TextField , Divider } from '@material-ui/core';
 import Toolbar from "../toolbar";
 import Axios from 'axios';
 import { Golabal_Data } from './DataContext';
+import { useSnackbar } from 'notistack';
 
 
 
@@ -14,6 +15,8 @@ function Recived(props) {
 
     const [selectedDate, setSelectedDate] = useState();
     const [,,getdata] = useContext(Golabal_Data);
+    const { enqueueSnackbar } = useSnackbar();
+
 
     let data={};
 
@@ -31,8 +34,10 @@ function Recived(props) {
         Axios.post('http://localhost:4800/main',data,{ headers:{ 'Content-Type': 'application/json' ,Authorization: `Bearer ${localStorage.getItem('token')}`} })
         .then(() => {
             getdata();
+            enqueueSnackbar('Transaction Successfully', {variant: 'success' });
             props.history.push('/dashbord');
-            alert('Transaction Successfully ');
+
+
         })
         .catch(err => console.log(err))
     }

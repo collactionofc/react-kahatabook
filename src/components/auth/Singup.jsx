@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/login.css';
+import { useSnackbar } from 'notistack';
 
 
 const Singup = (props) => {
     const [error,seterror ] = useState();
     const [file,setfile ] = useState();
-
+    const { enqueueSnackbar } = useSnackbar();
+    
     const onsubmit = async (event) =>{
         event.preventDefault();
         let form_data={}
@@ -33,6 +35,7 @@ const Singup = (props) => {
 
                 if(fieupload.status === 200){
                     console.log(fieupload.data)
+                    enqueueSnackbar('Regstration Success Now Verified your Gmail...',{variant:'success'})
                     props.history.push('/login');
                 }else{
                     console.log('errorr at image uplaod');

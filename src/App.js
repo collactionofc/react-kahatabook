@@ -7,6 +7,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import {  SnackbarProvider } from 'notistack';
 
 import "./App.css";
 
@@ -27,8 +28,10 @@ import { DataContext } from './components/main/DataContext';
 function App() {
   return (
     <div className="App">
+  
       <Router>
         <Switch>
+        <SnackbarProvider maxSnack={3} anchorOrigin={{  vertical: 'top', horizontal: 'center' }}>
 
          <Route exact path="/"  component={Login} />
 
@@ -36,16 +39,16 @@ function App() {
           <Route  exact path="/singup" component={Singup}  />
 
           <DataContext>
-            <Route exact path="/profile" component={Profile}/>
-            <Route exact path="/dashbord" component={Dashbord} />
-            <Route exact path="/pay" component={Pay} />
-            <Route exact path="/recived" component={Recived} />
-            <Route exact path="/report" component={Report} />
-            <Protected exact path="/edit" component={Pedit} />
-
+              <Protected exact path="/profile" component={Profile}/>
+              <Protected exact path="/dashbord" component={Dashbord} />
+              <Protected exact path="/pay" component={Pay} />
+              <Protected exact path="/recived" component={Recived} />
+              <Protected exact path="/report" component={Report} />
+              <Protected exact path="/edit" component={Pedit} />
             <Protected exact path="/logout" component={Logout} />
           
           </DataContext>
+          </SnackbarProvider>
 
           <Route path="*" component={ () => <h1>Page not Found</h1>} />
 

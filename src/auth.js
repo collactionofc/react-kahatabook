@@ -1,8 +1,7 @@
-// import { Redirect } from 'react-router-dom';
-
 class Auth {
     constructor(){
         this.authentication = false;
+        this.token = '';
     }
 
     login(cb){

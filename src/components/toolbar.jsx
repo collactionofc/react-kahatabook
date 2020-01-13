@@ -12,7 +12,7 @@ const navlink = {
 function Toolbar(props) {
     const [data] = useContext(Golabal_Data);
     return (
-        <div>
+        <React.Fragment>
             <nav className="mb-1 navbar navbar-expand-lg navbar-light #fafafa grey lighten-5">
                 <Link style={navlink} className="navbar-brand btn btn-danger btn-rounded " to="/">Khatabook</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
@@ -53,13 +53,14 @@ function Toolbar(props) {
                             <div className="dropdown-menu dropdown-menu-right dropdown-default"
                                 aria-labelledby="navbarDropdownMenuLink-333">
                                 <Link className="dropdown-item btn btn-success" to="/profile">Profile</Link>
+                                <Link className="dropdown-item btn btn-success" to="/edit" >Edit Profile</Link>
                                 <Link className="dropdown-item btn btn-danger" to="/logout" >Logout</Link>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
-        </div>
+        </React.Fragment>
     )
 }
 // () =>  <Redirect to="/" push={true} />)

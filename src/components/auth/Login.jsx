@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import  Auth  from '../../auth';
 import axios from 'axios';
 import '../../css/login.css';
+import { useSnackbar } from 'notistack';
 
 const Login = (props) => {
 
     const [emaildata,setemaildata] = useState(null);
     const [passdata,setpassdata] = useState(null);
     const [error,seterror] = useState(null);
+    const { enqueueSnackbar } = useSnackbar();
+
 
     const onchange = async (e)=>{
         if([e.target.name] == "email")  setemaildata(e.target.value); 
@@ -23,6 +26,8 @@ const Login = (props) => {
             const response = await axios.post( 'http://localhost:4800/auth/login',{ email: emaildata,password:passdata },{ headers: { 'Content-Type': 'application/json' } })
             localStorage.setItem('token',response.data.token);
             Auth.login(()=>{
+                Auth.token = response.data.token;
+                enqueueSnackbar('Login Success',{variant:'success'})
                 props.history.push('/dashbord');
             })
 

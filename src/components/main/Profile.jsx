@@ -37,7 +37,7 @@ export default function Profile(props) {
 
 
     return (
-        <div>
+        <React.Fragment>
             <Toolbar />
             
             <div className="container emp-profile">
@@ -120,6 +120,6 @@ export default function Profile(props) {
                 </div>
 
             </div>
-        </div>
+        </React.Fragment>
     )
 }

@@ -11,3 +11,8 @@ a{
 h1,h2,h3{
   font-family: 'Kaushan Script', cursive;
 }
+.my-auto{
+  /* background: linear-gradient(to right, #2193b0, #6dd5ed); */
+  margin: 50px;
+  padding: 40px;
+}
